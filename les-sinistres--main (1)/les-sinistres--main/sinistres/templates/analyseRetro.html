@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js'></script>
+<div class="content-section">
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4"></legend>
+            <div class="form-group">
+                {{ form.ville.label(class="form-control-label") }}
+                {% if form.ville.errors %}
+                    {{ form.ville(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.ville.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.ville(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.ca.label(class="form-control-label") }}
+                {% if form.ca.errors %}
+                    {{ form.ca(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.ca.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.ca(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.couts.label(class="form-control-label") }}
+                {% if form.couts.errors %}
+                    {{ form.couts(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.couts.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.couts(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.pivot.label(class="form-control-label") }}
+                {% if form.pivot.errors %}
+                    {{ form.pivot(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.pivot.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.pivot(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+        </fieldset>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-outline-info") }}
+        </div>
+    </form>
+
+    <!-- Affichage des résultats ici -->
+    {% if result %}
+        <div class="result-section mt-4">
+            <h3>Résultats de l'analyse :</h3>
+            <p><strong>Prime à payer :</strong> {{ result.prime }} euros</p>
+          
+        </div>
+    {% endif %}
+</div>
+{% endblock content %}
